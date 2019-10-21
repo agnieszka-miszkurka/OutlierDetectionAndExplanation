@@ -16,7 +16,6 @@ class Coin:
     y = self.y
     inliners = x[y == 1]
     outliers = x[y == -1]
-    print(outliers[out_num])
 
     # Resample outlier to form cluster.
     n_dimens = len(outliers[0])
@@ -34,7 +33,6 @@ class Coin:
     context = inliners[out_neigh,:]
     db = DBSCAN(eps=0.1, min_samples=3).fit(context)
     labels = db.labels_
-    print(db)
 
     # Number of clusters in labels, ignoring noise if present.
     n_clusters_ = len(set(labels)) - (1 if -1 in labels else 0)
